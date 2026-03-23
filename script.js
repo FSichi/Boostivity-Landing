@@ -138,3 +138,68 @@ const barObserver = new IntersectionObserver((entries, obs) => {
 }, barObserverOptions);
 
 document.querySelectorAll('.comparison-box').forEach(el => barObserver.observe(el));
+// Chat Simulation Animation
+const chatSimulation = document.getElementById('chat-simulation');
+if(chatSimulation) {
+    const chatObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                startChatAnimation();
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+    
+    chatObserver.observe(chatSimulation);
+}
+
+function startChatAnimation() {
+    const messages = [
+        { type: 'user', name: 'Ejecutivo de Ventas', text: '¿Tenemos stock del Servidor Nexus X200 para el cliente Acme Corp? Si no hay, ¿qué alternativa ofrezco?' },
+        { type: 'bot', name: 'Boostivity IA', text: 'Analizando inventario ERP y catálogo de productos... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+        { type: 'bot', name: 'Boostivity IA', text: 'Actualmente hay <span class="highlight-text">0 unidades</span> del Nexus X200 en inventario (Próxima entrega: 15 días). <br><br>💡 <strong>Alternativa sugerida:</strong> Servidor Atlas Pro M1.<br>Cumple con los mismos requisitos técnicos de Acme Corp. Además, tenemos 12 en stock y una regla configurada te permite dar un <span class="highlight-text">15% de descuento</span> para cierres hoy al ofrecer esta alternativa.' }
+    ];
+
+    let delay = 600;
+    
+    // Add user message
+    setTimeout(() => appendMessage(messages[0]), delay);
+    
+    // Add thinking message
+    delay += 1500;
+    let tempId = 'msg-temp';
+    setTimeout(() => appendMessage({...messages[1], id: tempId}), delay);
+    
+    // Replace with final bot message
+    delay += 3200;
+    setTimeout(() => {
+        const tempElement = document.getElementById(tempId);
+        if(tempElement) tempElement.style.opacity = '0';
+        setTimeout(() => {
+            if(tempElement) tempElement.remove();
+            appendMessage(messages[2]);
+        }, 300);
+    }, delay);
+}
+
+function appendMessage(msg) {
+    const div = document.createElement('div');
+    div.className = `chat-msg msg-${msg.type}`;
+    if(msg.id) div.id = msg.id;
+    
+    const labelIcon = msg.type === 'bot' 
+        ? '<div class="bot-icon">B</div>' 
+        : '<span style="font-size: 1.1rem;">👤</span>';
+
+    div.innerHTML = `
+        <div class="msg-label">${labelIcon} ${msg.name}</div>
+        <div class="msg-bubble">${msg.text}</div>
+    `;
+    
+    document.getElementById('chat-simulation').appendChild(div);
+    
+    // Animate in
+    setTimeout(() => {
+        div.classList.add('show');
+    }, 50);
+}
