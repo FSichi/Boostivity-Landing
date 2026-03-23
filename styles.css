@@ -80,12 +80,13 @@ h4,
 
 /* Background Blobs & Grid */
 .blob-bg {
-    position: absolute;
+    position: fixed;
     filter: blur(140px);
     border-radius: 50%;
     opacity: 0.4;
     z-index: -1;
     animation: float 10s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
 .blob-1 {
@@ -127,6 +128,7 @@ h4,
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
+    overflow-x: clip;
 }
 
 .text-center {
@@ -983,6 +985,7 @@ footer {
 /* Integrations Marquee */
 .marquee-container {
     overflow: hidden;
+    overflow-x: clip;
     white-space: nowrap;
     width: 100%;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -1058,6 +1061,10 @@ footer {
     max-width: 100%;
 }
 
+.chat-window * {
+    min-width: 0;
+}
+
 .chat-header {
     background: rgba(255, 255, 255, 0.02);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -1131,6 +1138,14 @@ footer {
 .msg-user .msg-bubble {
     max-width: 100%;
     overflow-x: auto;
+}
+
+.msg-bot .msg-bubble {
+    width: 100%;
+}
+
+.msg-bubble {
+    min-width: 0;
 }
 
 .msg-bubble table {
@@ -1355,6 +1370,7 @@ footer {
 
     .msg-bubble table {
         min-width: 430px;
+        width: max-content;
     }
 
     .cta-audit-chip {
@@ -1443,6 +1459,7 @@ footer {
 
     .msg-bubble table {
         min-width: 360px;
+        width: max-content;
         font-size: 0.8rem;
     }
 
