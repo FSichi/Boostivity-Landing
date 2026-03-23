@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <div class="bg-grid" aria-hidden="true"></div>
     <div class="ambient ambient-top"></div>
     <div class="ambient ambient-bottom"></div>
 
@@ -35,107 +36,80 @@
         <a class="btn btn-small" href="#contacto">Solicitar Demo</a>
     </header>
 
-    <main id="inicio">
+    <main id="inicio" class="page">
         <section class="hero container reveal">
-            <div class="hero-copy">
-                <p class="eyebrow">IA Empresarial Con RAG</p>
-                <h1>
-                    IA operacional para resolver procesos reales, no solo responder preguntas.
-                </h1>
-                <p class="lead">
-                    Boostivity unifica conocimiento interno, documentos, scraping web y reglas por área para crear
-                    agentes especializados con personalidad, tono y capacidad de resolución distinta.
-                </p>
-                <div class="hero-cta">
-                    <a class="btn" href="#contacto">Quiero una implementación</a>
-                    <a class="btn btn-ghost" href="#impacto">Ver indicadores</a>
-                </div>
-                <div class="hero-tags">
-                    <span>Agentes por rol</span>
-                    <span>Ingesta documental + scraping</span>
-                    <span>Gestor documental completo</span>
-                </div>
-                <div class="hero-proof">
-                    <div>
-                        <span class="counter" data-target="67">0</span>
-                        <small>% menos tiempo de respuesta</small>
+            <article class="hero-shell">
+                <div class="hero-copy">
+                    <p class="eyebrow">Boostivity · IA Operacional</p>
+                    <h1>De chatbot genérico a sistema de agentes que ejecuta procesos reales.</h1>
+                    <p class="lead">
+                        Diseña agentes por área con personalidad y reglas propias, integra documentos y scraping web,
+                        y transforma tu conocimiento en acciones medibles para toda la organización.
+                    </p>
+                    <div class="hero-cta">
+                        <a class="btn" href="#contacto">Quiero una implementación</a>
+                        <a class="btn btn-ghost" href="#impacto">Ver indicadores</a>
                     </div>
-                    <div>
-                        <span class="counter" data-target="2.4">0</span>
-                        <small>x más velocidad comercial</small>
-                    </div>
-                    <div>
-                        <span class="counter" data-target="98">0</span>
-                        <small>% respuestas con contexto real</small>
+                    <div class="hero-tags">
+                        <span>Agentes por rol y objetivo</span>
+                        <span>Documentos + web scraping</span>
+                        <span>Gestor documental IA</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="hero-visual">
-                <article class="signal-card hero-kpi-panel">
-                    <header>
-                        <h2>Pulso operativo en vivo</h2>
-                        <p>Puntos de venta, soporte y backoffice sincronizados.</p>
-                    </header>
-                    <div class="kpi-grid">
+                <aside class="hero-side">
+                    <div class="live-kpi">
+                        <small>Desempeño operativo</small>
+                        <strong><span class="counter" data-target="67">0</span>% menos tiempo de respuesta</strong>
+                        <p>Conocimiento contextual disponible para equipos comerciales, soporte y operación.</p>
+                    </div>
+                    <div class="metric-strip">
                         <article>
-                            <small>Consultas resueltas por IA</small>
+                            <small>Consultas resueltas IA</small>
                             <strong class="counter" data-target="12480">0</strong>
                         </article>
                         <article>
-                            <small>Tiempo medio de respuesta</small>
-                            <strong><span class="counter" data-target="2.1">0</span> min</strong>
+                            <small>Velocidad comercial</small>
+                            <strong><span class="counter" data-target="2.4">0</span>x</strong>
                         </article>
                         <article>
-                            <small>Locales con cobertura asistida</small>
-                            <strong class="counter" data-target="482">0</strong>
-                        </article>
-                        <article>
-                            <small>Base de conocimiento indexada</small>
-                            <strong><span class="counter" data-target="99.2">0</span>%</strong>
+                            <small>Precisión contextual</small>
+                            <strong><span class="counter" data-target="98">0</span>%</strong>
                         </article>
                     </div>
-                    <div class="kpi-flow">
-                        <div>
-                            <span>Canal WhatsApp</span>
-                            <b>4.2s</b>
-                        </div>
-                        <div>
-                            <span>Canal Web + Widget</span>
-                            <b>3.7s</b>
-                        </div>
-                        <div>
-                            <span>Equipo interno</span>
-                            <b>2.9s</b>
-                        </div>
+                    <div class="signal-list">
+                        <div><span>Portal clientes</span><b>3.5s</b></div>
+                        <div><span>Web + Widget</span><b>3.7s</b></div>
+                        <div><span>Mesa interna</span><b>2.9s</b></div>
                     </div>
-                    <footer>
-                        <span class="dot"></span>
-                        <p>Recuperación contextual con trazabilidad y métricas accionables.</p>
-                    </footer>
-                </article>
-            </div>
+                </aside>
+            </article>
         </section>
 
         <section id="agentes" class="section container reveal">
-            <div class="section-head">
-                <p class="eyebrow">Agentes Configurables</p>
-                <h2>Cada agente tiene personalidad, objetivo y criterios de resolución propios.</h2>
+            <div class="section-head split-head">
+                <div>
+                    <p class="eyebrow">Agentes Configurables</p>
+                    <h2>Define cómo piensa y cómo responde cada agente según su área.</h2>
+                </div>
+                <p class="section-note">
+                    Tono, reglas, fuentes, límites y escalamiento configurables para cada rol.
+                </p>
             </div>
 
             <div class="agent-config">
                 <div class="agent-pills" role="tablist" aria-label="Perfiles de agente">
-                    <button class="agent-pill is-active" type="button" data-agent="comercial">Comercial</button>
-                    <button class="agent-pill" type="button" data-agent="soporte">Soporte técnico</button>
-                    <button class="agent-pill" type="button" data-agent="operaciones">Operaciones internas</button>
+                    <button class="agent-pill is-active" type="button" data-agent="comercial">Agente Comercial</button>
+                    <button class="agent-pill" type="button" data-agent="soporte">Agente Soporte</button>
+                    <button class="agent-pill" type="button" data-agent="operaciones">Agente Operaciones</button>
                 </div>
 
                 <article class="agent-preview" aria-live="polite">
                     <small id="agentTone">Tono: consultivo y persuasivo</small>
                     <h3 id="agentTitle">Agente Comercial</h3>
                     <p id="agentDescription">
-                        Prioriza cierre de oportunidades, compara productos, responde objeciones con contexto y
-                        sugiere próximos pasos comerciales por canal.
+                        Prioriza cierre de oportunidades, compara productos y responde objeciones con contexto
+                        actualizado del negocio.
                     </p>
                     <ul id="agentCapabilities">
                         <li>Argumentación de valor por segmento</li>
@@ -147,25 +121,16 @@
 
             <div class="value-grid value-grid-v2">
                 <article class="value-card">
-                    <h3>Memoria operacional por agente</h3>
-                    <p>
-                        Cada perfil usa fuentes, reglas y estilo de respuesta distinto para evitar respuestas
-                        genéricas en tareas críticas.
-                    </p>
+                    <h3>Personalidad y criterio</h3>
+                    <p>Cada agente puede ser más técnico, ejecutivo o consultivo según su misión.</p>
                 </article>
                 <article class="value-card">
-                    <h3>Personalidad configurable</h3>
-                    <p>
-                        Define tono, nivel técnico y límites de acción para cada área: comercial, soporte,
-                        operaciones, finanzas o RRHH.
-                    </p>
+                    <h3>Resolución por objetivo</h3>
+                    <p>Optimiza cierre comercial, resolución técnica o eficiencia interna sin mezclar contextos.</p>
                 </article>
                 <article class="value-card">
-                    <h3>Escalamiento inteligente</h3>
-                    <p>
-                        El agente detecta baja confianza o casos críticos y deriva automáticamente con contexto
-                        al equipo humano correcto.
-                    </p>
+                    <h3>Escalamiento automático</h3>
+                    <p>Cuando hay baja confianza, deriva con trazabilidad al equipo responsable.</p>
                 </article>
             </div>
         </section>
@@ -173,47 +138,38 @@
         <section id="plataforma" class="section container reveal">
             <div class="section-head">
                 <p class="eyebrow">Plataforma De Conocimiento</p>
-                <h2>Ingesta, scraping y gestión documental en una sola plataforma.</h2>
+                <h2>Una base sólida para ingesta documental, scraping y gobierno de información.</h2>
             </div>
 
             <div class="platform-grid">
                 <article class="platform-card">
-                    <span class="platform-kicker">Documentos</span>
-                    <h3>Ingesta desde archivos reales</h3>
-                    <p>
-                        PDF, DOCX, hojas de cálculo, catálogos y procedimientos internos con versionado y
-                        trazabilidad por fuente.
-                    </p>
+                    <span class="platform-kicker">Ingesta documental</span>
+                    <h3>PDF, DOCX, hojas de cálculo y manuales internos</h3>
+                    <p>Centraliza información dispersa con versionado, permisos y trazabilidad por fuente.</p>
                     <ul>
                         <li>Versiones y vigencia documental</li>
                         <li>Etiquetado por área y criticidad</li>
-                        <li>Permisos por equipo o rol</li>
+                        <li>Accesos por rol organizacional</li>
                     </ul>
                 </article>
                 <article class="platform-card">
-                    <span class="platform-kicker">Web Scraping</span>
-                    <h3>Captura de información pública y privada</h3>
-                    <p>
-                        Scraping de portales, proveedores y bases web para actualizar precios, fichas y contenido
-                        operativo sin carga manual repetitiva.
-                    </p>
+                    <span class="platform-kicker">Web scraping</span>
+                    <h3>Captura automática desde portales y sitios clave</h3>
+                    <p>Actualiza datos de mercado y contenido operativo con sincronización periódica.</p>
                     <ul>
-                        <li>Rastreo programable por frecuencia</li>
+                        <li>Rastreo programable</li>
                         <li>Normalización de datos extraídos</li>
-                        <li>Alertas por cambios críticos</li>
+                        <li>Alertas ante cambios críticos</li>
                     </ul>
                 </article>
                 <article class="platform-card">
-                    <span class="platform-kicker">Gestor Documental IA</span>
-                    <h3>Gobierno completo del conocimiento</h3>
-                    <p>
-                        Unifica repositorios dispersos en un gestor documental empresarial con búsqueda semántica,
-                        referencias y auditoría de uso.
-                    </p>
+                    <span class="platform-kicker">Gestor documental IA</span>
+                    <h3>Búsqueda semántica, auditoría y cobertura de conocimiento</h3>
+                    <p>Convierte repositorios desconectados en una capa de información utilizable y gobernada.</p>
                     <ul>
-                        <li>Índice semántico por unidad de negocio</li>
+                        <li>Índice semántico por unidad</li>
                         <li>Historial de consultas y respuestas</li>
-                        <li>Métricas de calidad y cobertura</li>
+                        <li>Métricas de calidad de respuesta</li>
                     </ul>
                 </article>
             </div>
@@ -222,33 +178,24 @@
         <section id="areas" class="section container reveal">
             <div class="section-head">
                 <p class="eyebrow">Gestión Por Áreas</p>
-                <h2>Organiza la empresa por áreas y revisa procesos internos con evidencia.</h2>
+                <h2>Estructura tu organización por áreas y revisa procesos con evidencia operativa.</h2>
             </div>
 
             <div class="workflow areas-grid">
                 <article class="workflow-step">
                     <span class="workflow-index">01</span>
-                    <h3>Mapa por áreas</h3>
-                    <p>
-                        Segmenta conocimiento y agentes por Comercial, Operaciones, Finanzas, RRHH, Soporte y
-                        cualquier área crítica.
-                    </p>
+                    <h3>Mapa por unidades</h3>
+                    <p>Segmenta conocimiento y agentes en Comercial, Operaciones, Finanzas, RRHH y Soporte.</p>
                 </article>
                 <article class="workflow-step">
                     <span class="workflow-index">02</span>
-                    <h3>Revisión de procesos</h3>
-                    <p>
-                        Detecta cuellos de botella, pasos redundantes y puntos de fricción con analítica sobre
-                        consultas y tiempos de resolución.
-                    </p>
+                    <h3>Diagnóstico de procesos</h3>
+                    <p>Detecta cuellos de botella y fricciones en el flujo interno con datos de uso reales.</p>
                 </article>
                 <article class="workflow-step">
                     <span class="workflow-index">03</span>
                     <h3>Mejora continua</h3>
-                    <p>
-                        Convierte los hallazgos en nuevas reglas, prompts y flujos para que cada agente mejore con
-                        cada iteración.
-                    </p>
+                    <p>Refina reglas y comportamiento de agentes de forma iterativa con trazabilidad completa.</p>
                 </article>
             </div>
         </section>
@@ -256,7 +203,7 @@
         <section id="arquitectura" class="section section-alt container reveal">
             <div class="section-head">
                 <p class="eyebrow">Arquitectura Boostivity</p>
-                <h2>Diseñada para escalar en organizaciones reales.</h2>
+                <h2>Pipeline de datos y agentes preparado para escalar de forma segura.</h2>
             </div>
 
             <div class="architecture">
@@ -265,19 +212,16 @@
                     <div class="arch-connector"></div>
                     <div class="node">Ingesta + embeddings</div>
                     <div class="arch-connector"></div>
-                    <div class="node">RAG Orchestrator</div>
+                    <div class="node">Orquestador RAG</div>
                     <div class="arch-connector"></div>
-                    <div class="node">AI Gateway multi-modelo</div>
+                    <div class="node">AI Gateway</div>
                 </div>
-
                 <div class="arch-turn"></div>
-
                 <div class="arch-lane arch-bottom">
                     <div class="node">Analytics + mejora continua</div>
                     <div class="arch-connector"></div>
                     <div class="node">WebApp + Widget + canales</div>
                 </div>
-
                 <div class="arch-return"></div>
             </div>
         </section>
@@ -285,7 +229,7 @@
         <section id="impacto" class="section container reveal">
             <div class="section-head">
                 <p class="eyebrow">Impacto Medible</p>
-                <h2>Indicadores operativos que puedes seguir semana a semana.</h2>
+                <h2>Indicadores semanales para validar mejoras en productividad y servicio.</h2>
             </div>
 
             <div class="kpi-board">
@@ -293,19 +237,19 @@
                     <small>Tiempo medio de resolución</small>
                     <strong><span class="counter" data-target="9.4">0</span>m → <span class="counter"
                             data-target="2.8">0</span>m</strong>
-                    <p>Soporte, preventa y operaciones con contexto listo al primer intento.</p>
+                    <p>Reducción en tiempos de respuesta para soporte, preventa y operaciones.</p>
                 </article>
                 <article class="kpi-card">
                     <small>Resolución en primera interacción</small>
                     <strong><span class="counter" data-target="53">0</span>% → <span class="counter"
                             data-target="84">0</span>%</strong>
-                    <p>Menos recontactos y menos transferencias entre equipos.</p>
+                    <p>Menos recontactos, menos transferencias y más respuestas útiles desde el primer intento.</p>
                 </article>
                 <article class="kpi-card">
-                    <small>Cobertura de puntos de venta asistidos</small>
+                    <small>Cobertura operativa asistida</small>
                     <strong><span class="counter" data-target="120">0</span> → <span class="counter"
                             data-target="480">0</span></strong>
-                    <p>El conocimiento experto llega a más sucursales sin aumentar estructura.</p>
+                    <p>Mayor alcance organizacional sin escalar proporcionalmente la estructura.</p>
                 </article>
             </div>
 
@@ -343,10 +287,10 @@
 
         <section class="section section-cta container reveal" id="contacto">
             <p class="eyebrow">Próximo Paso</p>
-            <h2>En 1 semana puedes lanzar agentes IA por área, conectados a tu documentación real.</h2>
+            <h2>En 1 semana puedes lanzar agentes IA por área con tu documentación real conectada.</h2>
             <p>
-                Te acompañamos desde el diseño de casos de uso hasta el despliegue en producción con
-                analítica y mejora continua.
+                Te acompañamos desde diseño de casos de uso hasta despliegue productivo con monitoreo y mejora
+                continua.
             </p>
             <div class="hero-cta">
                 <a class="btn" href="mailto:info@boostivity.ai">Coordinar demo ejecutiva</a>
