@@ -1,309 +1,301 @@
-<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boostivity | IA + RAG Para Organizaciones Que Quieren Escalar</title>
-    <meta name="description"
-        content="Implementa IA con RAG en tu organización para reducir tiempos de respuesta, mejorar conversión y convertir conocimiento disperso en decisiones accionables." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boostivity | La Nueva Era de la IA Operacional</title>
+    <meta name="description" content="Transforma tu conocimiento en acciones con el sistema de agentes de Boostivity.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
-    <div class="bg-grid" aria-hidden="true"></div>
-    <div class="ambient ambient-top"></div>
-    <div class="ambient ambient-bottom"></div>
+    <!-- Background Effects -->
+    <div class="blob-bg blob-1"></div>
+    <div class="blob-bg blob-2"></div>
+    <div class="grid-overlay"></div>
 
-    <header class="topbar container">
-        <a class="brand" href="#inicio" aria-label="Inicio Boostivity">
-            <span class="brand-mark">B</span>
-            <span class="brand-name">Boostivity</span>
-        </a>
-        <nav class="topnav" aria-label="Navegación principal">
-            <a href="#agentes">Agentes</a>
-            <a href="#plataforma">Plataforma</a>
-            <a href="#areas">Áreas</a>
-            <a href="#arquitectura">Arquitectura</a>
-            <a href="#impacto">Impacto</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-        <a class="btn btn-small" href="#contacto">Solicitar Demo</a>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#inicio" class="logo">
+                <div class="logo-mark">B</div>
+                <span>Boostivity</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#agentes">Agentes</a>
+                <a href="#plataforma">Plataforma</a>
+                <a href="#areas">Áreas</a>
+                <a href="#arquitectura">Arquitectura</a>
+                <a href="#impacto">Impacto</a>
+            </nav>
+            <a href="#contacto" class="btn-primary nav-btn btn-glow">Solicitar Demo</a>
+        </div>
     </header>
 
-    <main id="inicio" class="page">
-        <section class="hero container reveal">
-            <article class="hero-shell">
-                <div class="hero-copy">
-                    <p class="eyebrow">Boostivity · IA Operacional</p>
-                    <h1>De chatbot genérico a sistema de agentes que ejecuta procesos reales.</h1>
-                    <p class="lead">
-                        Diseña agentes por área con personalidad y reglas propias, integra documentos y scraping web,
-                        y transforma tu conocimiento en acciones medibles para toda la organización.
-                    </p>
-                    <div class="hero-cta">
-                        <a class="btn" href="#contacto">Quiero una implementación</a>
-                        <a class="btn btn-ghost" href="#impacto">Ver indicadores</a>
-                    </div>
-                    <div class="hero-tags">
-                        <span>Agentes por rol y objetivo</span>
-                        <span>Documentos + web scraping</span>
-                        <span>Gestor documental IA</span>
-                    </div>
-                </div>
-
-                <aside class="hero-side">
-                    <div class="live-kpi">
-                        <small>Desempeño operativo</small>
-                        <strong><span class="counter" data-target="67">0</span>% menos tiempo de respuesta</strong>
-                        <p>Conocimiento contextual disponible para equipos comerciales, soporte y operación.</p>
-                    </div>
-                    <div class="metric-strip">
-                        <article>
-                            <small>Consultas resueltas IA</small>
-                            <strong class="counter" data-target="12480">0</strong>
-                        </article>
-                        <article>
-                            <small>Velocidad comercial</small>
-                            <strong><span class="counter" data-target="2.4">0</span>x</strong>
-                        </article>
-                        <article>
-                            <small>Precisión contextual</small>
-                            <strong><span class="counter" data-target="98">0</span>%</strong>
-                        </article>
-                    </div>
-                    <div class="signal-list">
-                        <div><span>Portal clientes</span><b>3.5s</b></div>
-                        <div><span>Web + Widget</span><b>3.7s</b></div>
-                        <div><span>Mesa interna</span><b>2.9s</b></div>
-                    </div>
-                </aside>
-            </article>
-        </section>
-
-        <section id="agentes" class="section container reveal">
-            <div class="section-head split-head">
-                <div>
-                    <p class="eyebrow">Agentes Configurables</p>
-                    <h2>Define cómo piensa y cómo responde cada agente según su área.</h2>
-                </div>
-                <p class="section-note">
-                    Tono, reglas, fuentes, límites y escalamiento configurables para cada rol.
+    <!-- Main Hero -->
+    <main id="inicio">
+        <section class="hero-section text-center">
+            <div class="container hero-container">
+                <div class="pill-badge reveal">🚀 La nueva era de la IA Operacional</div>
+                <h1 class="hero-title reveal delay-1">
+                    De chatbot genérico a <br>
+                    <span class="text-gradient">Sistema de Agentes</span> avanzado
+                </h1>
+                <p class="hero-subtitle reveal delay-2">
+                    Diseña agentes con personalidad, integra tus documentos y automatiza tus procesos reales. Multiplica la eficiencia corporativa hoy mismo.
                 </p>
-            </div>
-
-            <div class="agent-config">
-                <div class="agent-pills" role="tablist" aria-label="Perfiles de agente">
-                    <button class="agent-pill is-active" type="button" data-agent="comercial">Agente Comercial</button>
-                    <button class="agent-pill" type="button" data-agent="soporte">Agente Soporte</button>
-                    <button class="agent-pill" type="button" data-agent="operaciones">Agente Operaciones</button>
+                <div class="hero-actions reveal delay-3">
+                    <a href="#contacto" class="btn-primary btn-glow btn-lg">Empezar Configuración</a>
+                    <a href="#impacto" class="btn-secondary btn-lg">Ver Métricas de Éxito</a>
                 </div>
 
-                <article class="agent-preview" aria-live="polite">
-                    <small id="agentTone">Tono: consultivo y persuasivo</small>
-                    <h3 id="agentTitle">Agente Comercial</h3>
-                    <p id="agentDescription">
-                        Prioriza cierre de oportunidades, compara productos y responde objeciones con contexto
-                        actualizado del negocio.
-                    </p>
-                    <ul id="agentCapabilities">
-                        <li>Argumentación de valor por segmento</li>
-                        <li>Comparativas técnicas y funcionales</li>
-                        <li>Propuestas guiadas según stock y política</li>
-                    </ul>
-                </article>
-            </div>
-
-            <div class="value-grid value-grid-v2">
-                <article class="value-card">
-                    <h3>Personalidad y criterio</h3>
-                    <p>Cada agente puede ser más técnico, ejecutivo o consultivo según su misión.</p>
-                </article>
-                <article class="value-card">
-                    <h3>Resolución por objetivo</h3>
-                    <p>Optimiza cierre comercial, resolución técnica o eficiencia interna sin mezclar contextos.</p>
-                </article>
-                <article class="value-card">
-                    <h3>Escalamiento automático</h3>
-                    <p>Cuando hay baja confianza, deriva con trazabilidad al equipo responsable.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="plataforma" class="section container reveal">
-            <div class="section-head">
-                <p class="eyebrow">Plataforma De Conocimiento</p>
-                <h2>Una base sólida para ingesta documental, scraping y gobierno de información.</h2>
-            </div>
-
-            <div class="platform-grid">
-                <article class="platform-card">
-                    <span class="platform-kicker">Ingesta documental</span>
-                    <h3>PDF, DOCX, hojas de cálculo y manuales internos</h3>
-                    <p>Centraliza información dispersa con versionado, permisos y trazabilidad por fuente.</p>
-                    <ul>
-                        <li>Versiones y vigencia documental</li>
-                        <li>Etiquetado por área y criticidad</li>
-                        <li>Accesos por rol organizacional</li>
-                    </ul>
-                </article>
-                <article class="platform-card">
-                    <span class="platform-kicker">Web scraping</span>
-                    <h3>Captura automática desde portales y sitios clave</h3>
-                    <p>Actualiza datos de mercado y contenido operativo con sincronización periódica.</p>
-                    <ul>
-                        <li>Rastreo programable</li>
-                        <li>Normalización de datos extraídos</li>
-                        <li>Alertas ante cambios críticos</li>
-                    </ul>
-                </article>
-                <article class="platform-card">
-                    <span class="platform-kicker">Gestor documental IA</span>
-                    <h3>Búsqueda semántica, auditoría y cobertura de conocimiento</h3>
-                    <p>Convierte repositorios desconectados en una capa de información utilizable y gobernada.</p>
-                    <ul>
-                        <li>Índice semántico por unidad</li>
-                        <li>Historial de consultas y respuestas</li>
-                        <li>Métricas de calidad de respuesta</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="areas" class="section container reveal">
-            <div class="section-head">
-                <p class="eyebrow">Gestión Por Áreas</p>
-                <h2>Estructura tu organización por áreas y revisa procesos con evidencia operativa.</h2>
-            </div>
-
-            <div class="workflow areas-grid">
-                <article class="workflow-step">
-                    <span class="workflow-index">01</span>
-                    <h3>Mapa por unidades</h3>
-                    <p>Segmenta conocimiento y agentes en Comercial, Operaciones, Finanzas, RRHH y Soporte.</p>
-                </article>
-                <article class="workflow-step">
-                    <span class="workflow-index">02</span>
-                    <h3>Diagnóstico de procesos</h3>
-                    <p>Detecta cuellos de botella y fricciones en el flujo interno con datos de uso reales.</p>
-                </article>
-                <article class="workflow-step">
-                    <span class="workflow-index">03</span>
-                    <h3>Mejora continua</h3>
-                    <p>Refina reglas y comportamiento de agentes de forma iterativa con trazabilidad completa.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="arquitectura" class="section section-alt container reveal">
-            <div class="section-head">
-                <p class="eyebrow">Arquitectura Boostivity</p>
-                <h2>Pipeline de datos y agentes preparado para escalar de forma segura.</h2>
-            </div>
-
-            <div class="architecture">
-                <div class="arch-lane arch-top">
-                    <div class="node">Fuentes de datos</div>
-                    <div class="arch-connector"></div>
-                    <div class="node">Ingesta + embeddings</div>
-                    <div class="arch-connector"></div>
-                    <div class="node">Orquestador RAG</div>
-                    <div class="arch-connector"></div>
-                    <div class="node">AI Gateway</div>
-                </div>
-                <div class="arch-turn"></div>
-                <div class="arch-lane arch-bottom">
-                    <div class="node">Analytics + mejora continua</div>
-                    <div class="arch-connector"></div>
-                    <div class="node">WebApp + Widget + canales</div>
-                </div>
-                <div class="arch-return"></div>
-            </div>
-        </section>
-
-        <section id="impacto" class="section container reveal">
-            <div class="section-head">
-                <p class="eyebrow">Impacto Medible</p>
-                <h2>Indicadores semanales para validar mejoras en productividad y servicio.</h2>
-            </div>
-
-            <div class="kpi-board">
-                <article class="kpi-card">
-                    <small>Tiempo medio de resolución</small>
-                    <strong><span class="counter" data-target="9.4">0</span>m → <span class="counter"
-                            data-target="2.8">0</span>m</strong>
-                    <p>Reducción en tiempos de respuesta para soporte, preventa y operaciones.</p>
-                </article>
-                <article class="kpi-card">
-                    <small>Resolución en primera interacción</small>
-                    <strong><span class="counter" data-target="53">0</span>% → <span class="counter"
-                            data-target="84">0</span>%</strong>
-                    <p>Menos recontactos, menos transferencias y más respuestas útiles desde el primer intento.</p>
-                </article>
-                <article class="kpi-card">
-                    <small>Cobertura operativa asistida</small>
-                    <strong><span class="counter" data-target="120">0</span> → <span class="counter"
-                            data-target="480">0</span></strong>
-                    <p>Mayor alcance organizacional sin escalar proporcionalmente la estructura.</p>
-                </article>
-            </div>
-
-            <article class="comparison reveal">
-                <h3>Antes vs. después de implementar Boostivity</h3>
-                <div class="bars">
-                    <div class="bar-row">
-                        <span>Tiempo de búsqueda interna</span>
-                        <div class="bar-track">
-                            <div class="bar before" data-width="78"></div>
-                            <div class="bar after" data-width="24"></div>
+                <!-- Floating Dashboard Mockup -->
+                <div class="hero-dashboard reveal delay-4">
+                    <div class="glass-panel dashboard-header">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                        <div class="dash-title">Boostivity Terminal / Agente Comercial</div>
+                    </div>
+                    <div class="glass-panel dashboard-body">
+                        <div class="dash-stat">
+                            <span class="stat-label">Tiempo de Respuesta</span>
+                            <span class="stat-value text-accent">-67%</span>
+                        </div>
+                        <div class="dash-stat">
+                            <span class="stat-label">Consultas Resueltas IA</span>
+                            <span class="stat-value counter" data-target="12480">0</span>
+                        </div>
+                        <div class="dash-stat">
+                            <span class="stat-label">Precisión de Contexto</span>
+                            <span class="stat-value text-accent-2">98%</span>
                         </div>
                     </div>
-                    <div class="bar-row">
-                        <span>Velocidad de respuesta comercial</span>
-                        <div class="bar-track">
-                            <div class="bar before" data-width="42"></div>
-                            <div class="bar after" data-width="86"></div>
-                        </div>
-                    </div>
-                    <div class="bar-row">
-                        <span>Consistencia entre canales</span>
-                        <div class="bar-track">
-                            <div class="bar before" data-width="38"></div>
-                            <div class="bar after" data-width="91"></div>
-                        </div>
-                    </div>
-                    <div class="legend">
-                        <span><i class="swatch before"></i> Antes</span>
-                        <span><i class="swatch after"></i> Con Boostivity</span>
-                    </div>
                 </div>
-            </article>
+            </div>
         </section>
 
-        <section class="section section-cta container reveal" id="contacto">
-            <p class="eyebrow">Próximo Paso</p>
-            <h2>En 1 semana puedes lanzar agentes IA por área con tu documentación real conectada.</h2>
-            <p>
-                Te acompañamos desde diseño de casos de uso hasta despliegue productivo con monitoreo y mejora
-                continua.
-            </p>
-            <div class="hero-cta">
-                <a class="btn" href="mailto:info@boostivity.ai">Coordinar demo ejecutiva</a>
-                <a class="btn btn-ghost" href="#inicio">Volver arriba</a>
+        <!-- Bento Grid / Agentes -->
+        <section id="agentes" class="section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">Automatización a <span class="text-gradient">tu medida</span></h2>
+                    <p class="section-subtitle">Define agentes especialistas para cada área de tu empresa y dales reglas claras.</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Agent Configurator -->
+                    <div class="bento-item bento-large glass-card reveal">
+                        <div class="bento-content">
+                            <h3>🤖 Configuración de Perfiles</h3>
+                            <div class="tabs">
+                                <button class="tab-btn active" data-tab="comercial">Agente Comercial</button>
+                                <button class="tab-btn" data-tab="soporte">Soporte Técnico</button>
+                                <button class="tab-btn" data-tab="ops">Operaciones</button>
+                            </div>
+                            <div class="tab-content" id="agent-display">
+                                <span class="pill-badge style-outline" id="a-tone">Tono: consultivo y persuasivo</span>
+                                <h4 id="a-title" class="text-accent mt-2">Agente Comercial</h4>
+                                <p id="a-desc">Prioriza cierre de oportunidades, compara productos y responde objeciones con contexto actualizado del negocio.</p>
+                                <ul id="a-caps" class="feature-list">
+                                    <li>Argumentación de valor por segmento</li>
+                                    <li>Comparativas técnicas y funcionales</li>
+                                    <li>Propuestas guiadas según stock y política</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bento-item glass-card reveal delay-1 bento-vertical">
+                        <div class="bento-icon">⚡</div>
+                        <h3>Personalidad y Tono</h3>
+                        <p>Cada agente adopta la personalidad ideal: consultivo, técnico o ejecutivo para generar confianza con tus clientes.</p>
+                    </div>
+
+                    <div class="bento-item glass-card reveal delay-2 bento-vertical">
+                        <div class="bento-icon">🔁</div>
+                        <h3>Cobertura Total</h3>
+                        <p>Cuando la IA tiene baja confianza, deriva la consulta automáticamente con trazabilidad completa al equipo experto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plataforma -->
+        <section id="plataforma" class="section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">El cerebro detrás de <br>la <span class="text-gradient">operación</span></h2>
+                    <p class="section-subtitle">Una base sólida para ingesta documental y gobierno de la información.</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="feature-card glass-card reveal hover-glow">
+                        <div class="card-icon">📂</div>
+                        <h3>Ingesta Documental</h3>
+                        <p>Centraliza PDF, DOCX, hojas de cálculo y manuales integrando permisos, trazabilidad y versionado corporativo.</p>
+                    </div>
+                    <div class="feature-card glass-card reveal delay-1 hover-glow">
+                        <div class="card-icon">🕸️</div>
+                        <h3>Sincronización Web</h3>
+                        <p>Captura y actualiza datos desde portales externos para alimentar a tus agentes en tiempo real sin intervención humana.</p>
+                    </div>
+                    <div class="feature-card glass-card reveal delay-2 hover-glow">
+                        <div class="card-icon">🧠</div>
+                        <h3>Gestor Semántico IA</h3>
+                        <p>Convierte repositorios estáticos y desconectados en una capa de información viva, conversacional y auditable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Gestión por Áreas -->
+        <section id="areas" class="section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">Gestión por <span class="text-gradient">Áreas</span></h2>
+                    <p class="section-subtitle">Estructura tu organización por áreas y revisa procesos con evidencia operativa.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="glass-card reveal hover-glow bento-vertical">
+                        <div class="step-number">01</div>
+                        <h3>Mapa por unidades</h3>
+                        <p class="text-muted mt-2">Segmenta conocimiento y agentes en Comercial, Operaciones, Finanzas, RRHH y Soporte.</p>
+                    </div>
+                    <div class="glass-card reveal delay-1 hover-glow bento-vertical">
+                        <div class="step-number">02</div>
+                        <h3>Diagnóstico de procesos</h3>
+                        <p class="text-muted mt-2">Detecta cuellos de botella y fricciones en el flujo interno con datos de uso reales.</p>
+                    </div>
+                    <div class="glass-card reveal delay-2 hover-glow bento-vertical">
+                        <div class="step-number">03</div>
+                        <h3>Mejora continua</h3>
+                        <p class="text-muted mt-2">Refina reglas y comportamiento de agentes de forma iterativa con trazabilidad completa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arquitectura -->
+        <section id="arquitectura" class="section">
+            <div class="container reveal">
+                <div class="glass-card border-glow" style="padding: 4rem 2rem;">
+                    <div class="text-center mb-5">
+                        <h2 class="section-title">Arquitectura <span class="text-gradient">Boostivity</span></h2>
+                        <p class="section-subtitle">Pipeline de datos y agentes preparado para escalar de forma segura.</p>
+                    </div>
+                    
+                    <div class="arch-wrapper mt-4">
+                        <div class="arch-node">Fuentes de datos</div>
+                        <div class="arch-node">Ingesta + Embeddings</div>
+                        <div class="arch-node">Orquestador RAG</div>
+                        <div class="arch-node">AI Gateway</div>
+                        <div class="arch-node">Analytics + Mejora Continua</div>
+                        <div class="arch-node highlight glow">WebApp + Widget + Canales</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impacto Medible -->
+        <section id="impacto" class="section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">Impacto <span class="text-gradient">Medible</span></h2>
+                    <p class="section-subtitle">Indicadores semanales para validar mejoras en productividad y servicio.</p>
+                </div>
+
+                <div class="grid-3 mb-5">
+                    <div class="glass-card reveal bento-vertical">
+                        <small class="text-muted" style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Tiempo Medio de Resolución</small>
+                        <div style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
+                            9.4m <span class="text-accent" style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> 2.8m
+                        </div>
+                        <p class="text-muted" style="font-size: 0.95rem;">Reducción en tiempos de respuesta para soporte, preventa y operaciones.</p>
+                    </div>
+                    <div class="glass-card reveal delay-1 bento-vertical">
+                        <small class="text-muted" style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Resolución 1º Interacción</small>
+                        <div style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
+                            <span class="counter" data-target="53">0</span>% <span class="text-accent" style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> <span class="counter" data-target="84">0</span>%
+                        </div>
+                        <p class="text-muted" style="font-size: 0.95rem;">Menos recontactos, menos transferencias y más respuestas útiles al primer intento.</p>
+                    </div>
+                    <div class="glass-card reveal delay-2 bento-vertical">
+                        <small class="text-muted" style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Cobertura Asistida</small>
+                        <div style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
+                            <span class="counter" data-target="120">0</span> <span class="text-accent" style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> <span class="counter" data-target="480">0</span>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.95rem;">Mayor alcance organizacional sin escalar proporcionalmente la estructura de costos.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card reveal comparison-box mt-4">
+                    <h3 style="margin-bottom: 2.5rem; font-size: 1.6rem;">Antes vs. después de implementar Boostivity</h3>
+                    
+                    <div class="bar-row">
+                        <span class="bar-label">Tiempo de búsqueda interna</span>
+                        <div class="bar-track">
+                            <div class="bar before-bar" data-width="78"></div>
+                            <div class="bar after-bar" data-width="24"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bar-row">
+                        <span class="bar-label">Velocidad de respuesta comercial</span>
+                        <div class="bar-track">
+                            <div class="bar before-bar" data-width="42"></div>
+                            <div class="bar after-bar" data-width="86"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bar-row">
+                        <span class="bar-label">Consistencia entre canales</span>
+                        <div class="bar-track">
+                            <div class="bar before-bar" data-width="38"></div>
+                            <div class="bar after-bar" data-width="91"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="legend mt-5">
+                        <span><span class="dot before-dot"></span> Antes</span>
+                        <span><span class="dot after-dot"></span> Con Boostivity</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contacto" class="section cta-section">
+            <div class="container reveal">
+                <div class="cta-box glass-card border-glow text-center">
+                    <h2 class="section-title">¿Listo para escalar con Inteligencia Artificial?</h2>
+                    <p class="section-subtitle">En solo 1 semana puedes desplegar agentes corporativos con tu documentación real conectada.</p>
+                    <a href="mailto:info@boostivity.ai" class="btn-primary btn-glow btn-xl mt-4">Coordinar Sesión Estratégica</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer container">
-        <p>© 2026 Boostivity · IA aplicada a resultados de negocio.</p>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <div class="logo-mark">B</div>
+                    <span>Boostivity</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#agentes">Agentes</a>
+                    <a href="#plataforma">Plataforma</a>
+                <a href="#areas">Áreas</a>
+                <a href="#arquitectura">Arquitectura</a>
+                <a href="#impacto">Impacto</a>
+            </div>
+                <p>&copy; 2026 Boostivity · IA aplicada a resultados de negocio.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="./script.js"></script>
 </body>
-
 </html>

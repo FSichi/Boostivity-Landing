@@ -1,129 +1,140 @@
-const revealElements = Array.from(document.querySelectorAll('.reveal'));
-
-const revealObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  },
-  { threshold: 0.2 },
-);
-
-revealElements.forEach(node => revealObserver.observe(node));
-
-const counters = Array.from(document.querySelectorAll('.counter'));
-const counterObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-
-      const el = entry.target;
-      const target = Number(el.dataset.target || 0);
-      const hasDecimal = String(el.dataset.target || '').includes('.');
-      const duration = 1300;
-      const start = performance.now();
-
-      const tick = now => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const value = target * eased;
-        el.textContent = hasDecimal ? value.toFixed(1) : Math.round(value).toString();
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-
-      requestAnimationFrame(tick);
-      counterObserver.unobserve(el);
-    });
-  },
-  { threshold: 0.45 },
-);
-
-counters.forEach(el => counterObserver.observe(el));
-
-const agentProfiles = {
-  comercial: {
-    tone: 'Tono: consultivo y persuasivo',
-    title: 'Agente Comercial',
-    description:
-      'Prioriza cierre de oportunidades, compara productos, responde objeciones con contexto y sugiere próximos pasos comerciales por canal.',
-    capabilities: [
-      'Argumentación de valor por segmento',
-      'Comparativas técnicas y funcionales',
-      'Propuestas guiadas según stock y política',
-    ],
-  },
-  soporte: {
-    tone: 'Tono: preciso, técnico y empático',
-    title: 'Agente De Soporte Técnico',
-    description:
-      'Resuelve incidencias con prioridad, referencia documentación interna vigente y propone diagnóstico paso a paso para cada caso.',
-    capabilities: [
-      'Triaging automático por severidad',
-      'Resolución guiada con playbooks internos',
-      'Derivación a especialista con contexto completo',
-    ],
-  },
-  operaciones: {
-    tone: 'Tono: ejecutivo, orientado a proceso',
-    title: 'Agente De Operaciones Internas',
-    description:
-      'Analiza procesos internos, detecta fricciones operativas y recomienda mejoras usando datos, documentación y reglas por área.',
-    capabilities: [
-      'Monitoreo de cuellos de botella',
-      'Sugerencias de estandarización',
-      'Checklist de cumplimiento por proceso',
-    ],
-  },
+﻿// Inicializar animaciones de scroll (IntersectionObserver)
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
 };
 
-const agentPills = Array.from(document.querySelectorAll('.agent-pill[data-agent]'));
-const agentTone = document.getElementById('agentTone');
-const agentTitle = document.getElementById('agentTitle');
-const agentDescription = document.getElementById('agentDescription');
-const agentCapabilities = document.getElementById('agentCapabilities');
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target); 
+        }
+    });
+}, observerOptions);
 
-function renderAgentProfile(key) {
-  const profile = agentProfiles[key];
-  if (!profile || !agentTone || !agentTitle || !agentDescription || !agentCapabilities) return;
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  agentTone.textContent = profile.tone;
-  agentTitle.textContent = profile.title;
-  agentDescription.textContent = profile.description;
-  agentCapabilities.innerHTML = profile.capabilities.map(item => `<li>${item}</li>`).join('');
+// Contadores Numéricos (Efecto Odometer)
+const countObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            startCounter(entry.target);
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => countObserver.observe(el));
+
+function startCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const duration = 2500; 
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3); // Cubic Ease Out
+        const currentCount = Math.floor(easeOut * target);
+        
+        el.innerText = currentCount.toLocaleString('es-ES');
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        } else {
+            el.innerText = target.toLocaleString('es-ES') + '+';
+        }
+    };
+    window.requestAnimationFrame(step);
 }
 
-agentPills.forEach(pill => {
-  pill.addEventListener('click', () => {
-    const key = pill.dataset.agent;
+// Lógica de Tabs interactivos de Agentes
+const agentData = {
+    comercial: {
+        tone: "Tono: consultivo y persuasivo",
+        title: "Agente Comercial",
+        desc: "Prioriza cierre de oportunidades, compara productos y responde objeciones con contexto actualizado del negocio.",
+        caps: [
+            "Argumentación de valor por segmento",
+            "Comparativas técnicas y funcionales",
+            "Propuestas guiadas según stock y política"
+        ]
+    },
+    soporte: {
+        tone: "Tono: técnico y empático",
+        title: "Agente de Soporte Técnico",
+        desc: "Resuelve incidencias con prioridad, referencia documentación interna vigente y propone diagnóstico paso a paso.",
+        caps: [
+            "Triaging automático por severidad",
+            "Resolución guiada con playbooks internos",
+            "Derivación a especialista con contexto"
+        ]
+    },
+    ops: {
+        tone: "Tono: ejecutivo orientado a proceso",
+        title: "Agente de Operaciones",
+        desc: "Analiza procesos internos, detecta fricciones operativas y recomienda mejoras usando datos y reglas configuradas.",
+        caps: [
+            "Monitoreo de cuellos de botella",
+            "Sugerencias de estandarización",
+            "Checklist de cumplimiento y calidad"
+        ]
+    }
+};
 
-    agentPills.forEach(node => node.classList.remove('is-active'));
-    pill.classList.add('is-active');
+const tabBtns = document.querySelectorAll('.tab-btn');
+const agentTone = document.getElementById('a-tone');
+const agentTitle = document.getElementById('a-title');
+const agentDesc = document.getElementById('a-desc');
+const agentCaps = document.getElementById('a-caps');
+const tabContent = document.getElementById('agent-display');
 
-    renderAgentProfile(key);
-  });
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Animación fluida de transición
+        tabContent.style.opacity = '0';
+        tabContent.style.transform = 'translateY(10px)';
+        tabContent.style.transition = 'all 0.3s ease';
+
+        setTimeout(() => {
+            const data = agentData[btn.dataset.tab];
+            agentTone.innerText = data.tone;
+            agentTitle.innerText = data.title;
+            agentDesc.innerText = data.desc;
+            
+            agentCaps.innerHTML = '';
+            data.caps.forEach(cap => {
+                const li = document.createElement('li');
+                li.innerText = cap;
+                agentCaps.appendChild(li);
+            });
+
+            tabContent.style.opacity = '1';
+            tabContent.style.transform = 'translateY(0)';
+        }, 300);
+    });
 });
 
-const comparison = document.querySelector('.comparison');
-const bars = Array.from(document.querySelectorAll('.bar[data-width]'));
+// Bar Animation Observer
+const barObserverOptions = {
+    threshold: 0.3
+};
+const barObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bars = entry.target.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                const targetWidth = bar.getAttribute('data-width');
+                bar.style.width = targetWidth + '%';
+            });
+            obs.unobserve(entry.target);
+        }
+    });
+}, barObserverOptions);
 
-if (comparison && bars.length) {
-  const barObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        bars.forEach(bar => {
-          const width = Number(bar.dataset.width || 0);
-          bar.style.width = `${Math.max(0, Math.min(width, 100))}%`;
-        });
-
-        barObserver.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.4 },
-  );
-
-  barObserver.observe(comparison);
-}
+document.querySelectorAll('.comparison-box').forEach(el => barObserver.observe(el));
