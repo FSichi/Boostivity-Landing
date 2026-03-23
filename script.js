@@ -81,6 +81,16 @@ const agentData = {
             "Sugerencias de estandarización",
             "Checklist de cumplimiento y calidad"
         ]
+    },
+    cumplimiento: {
+        tone: "Tono: normativo, claro y preventivo",
+        title: "Agente de Cumplimiento",
+        desc: "Interpreta políticas internas y normativa aplicable para reducir riesgos operativos y regulatorios.",
+        caps: [
+            "Validación de requisitos por proceso",
+            "Alertas de desviación y no conformidades",
+            "Guías accionables para auditorías internas"
+        ]
     }
 };
 
