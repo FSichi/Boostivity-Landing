@@ -261,7 +261,7 @@
         <!-- Arquitectura -->
         <section id="arquitectura" class="section">
             <div class="container reveal">
-                <div class="glass-card border-glow" style="padding: 4rem 2rem;">
+                <div class="glass-card border-glow architecture-shell">
                     <div class="text-center mb-5">
                         <h2 class="section-title">Arquitectura <span class="text-gradient">Boostivity</span></h2>
                         <p class="section-subtitle">Pipeline de datos y agentes preparado para escalar de forma segura.
@@ -302,47 +302,51 @@
                     </p>
                 </div>
 
-                <div class="grid-3 mb-5">
-                    <div class="glass-card reveal bento-vertical">
+                <div class="impact-layout mb-5">
+                    <article class="glass-card reveal impact-main-card">
                         <small class="text-muted"
                             style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Tiempo
                             Medio de Resolución</small>
                         <div
                             style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
                             9.4m <span class="text-accent"
+                                style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> 2.8m
                         </div>
                         <p class="text-muted" style="font-size: 0.95rem;">Reducción en tiempos de respuesta para
                             soporte, preventa y operaciones.</p>
-                    </div>
-                    <div class="glass-card reveal delay-1 bento-vertical">
-                        <small class="text-muted"
-                            style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Resolución
-                            1º Interacción</small>
-                        <div
-                            style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
-                            <span class="counter" data-target="53">0</span>% <span class="text-accent"
-                                style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> <span class="counter"
-                                data-target="84">0</span>%
-                        </div>
-                        <p class="text-muted" style="font-size: 0.95rem;">Menos recontactos, menos transferencias y más
-                            respuestas útiles al primer intento.</p>
-                    </div>
-                    <div class="glass-card reveal delay-2 bento-vertical">
-                        <small class="text-muted"
-                            style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Cobertura
-                            Asistida</small>
-                        <div
-                            style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
-                            <span class="counter" data-target="120">0</span> <span class="text-accent"
-                                style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> <span class="counter"
-                                data-target="480">0</span>
-                        </div>
-                        <p class="text-muted" style="font-size: 0.95rem;">Mayor alcance organizacional sin escalar
-                            proporcionalmente la estructura de costos.</p>
-                    </div>
-                </div>
 
-                <div class="glass-card reveal comparison-box mt-4">
+                        <div class="impact-subcards">
+                            <article class="impact-subcard reveal delay-1">
+                                <small class="text-muted"
+                                    style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Resolución
+                                    1º Interacción</small>
+                                <div
+                                    style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
+                                    <span class="counter" data-target="53">0</span>% <span class="text-accent"
+                                        style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> <span class="counter"
+                                        data-target="84">0</span>%
+                                </div>
+                                <p class="text-muted" style="font-size: 0.95rem;">Menos recontactos, menos
+                                    transferencias y más respuestas útiles al primer intento.</p>
+                            </article>
+
+                            <article class="impact-subcard reveal delay-2">
+                                <small class="text-muted"
+                                    style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 600;">Cobertura
+                                    Asistida</small>
+                                <div
+                                    style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
+                                    <span class="counter" data-target="120">0</span> <span class="text-accent"
+                                        style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> <span class="counter"
+                                        data-target="480">0</span>
+                                </div>
+                                <p class="text-muted" style="font-size: 0.95rem;">Mayor alcance organizacional sin
+                                    escalar proporcionalmente la estructura de costos.</p>
+                            </article>
+                        </div>
+                    </article>
+
+                    <div class="glass-card reveal comparison-box impact-comparison-card">
                     <h3 style="margin-bottom: 2.5rem; font-size: 1.6rem;">Antes vs. después de implementar Boostivity
                     </h3>
 
@@ -375,6 +379,7 @@
                         <span><span class="dot after-dot"></span> Con Boostivity</span>
                     </div>
                 </div>
+                </div>
             </div>
         </section>
 
@@ -388,10 +393,8 @@
                     <a href="mailto:info@boostivity.ai" class="btn-primary btn-glow btn-xl mt-4">Coordinar Sesión
                         Estratégica</a>
 
-                    <div
-                        style="margin-top: 2rem; display: flex; justify-content: center; animation: floatCard 8s ease-in-out infinite;">
-                        <div
-                            style="display: inline-flex; align-items: center; gap: 1rem; padding: 0.8rem 1.5rem; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 50px; text-align: left; max-width: 600px;">
+                    <div class="cta-audit-wrap">
+                        <div class="cta-audit-chip">
                             <span style="font-size: 1.5rem;">🔍</span>
                             <span style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.4;">
                                 <strong style="color: #fff;">¿Quieres que auditemos tu organización?</strong><br>
