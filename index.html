@@ -268,13 +268,26 @@
                         </p>
                     </div>
 
-                    <div class="arch-wrapper mt-4">
-                        <div class="arch-node">Fuentes de datos</div>
-                        <div class="arch-node">Ingesta + Embeddings</div>
-                        <div class="arch-node">Orquestador RAG</div>
-                        <div class="arch-node">AI Gateway</div>
-                        <div class="arch-node">Analytics + Mejora Continua</div>
-                        <div class="arch-node highlight glow">WebApp + Widget + Canales</div>
+                    <div class="arch-diagram mt-4" aria-label="Flujo de arquitectura Boostivity">
+                        <div class="arch-grid-line" aria-hidden="true"></div>
+
+                        <div class="arch-row arch-row-top">
+                            <div class="arch-node arch-live">Fuentes de datos</div>
+                            <span class="arch-link" aria-hidden="true"></span>
+                            <div class="arch-node arch-live">Ingesta + Embeddings</div>
+                            <span class="arch-link" aria-hidden="true"></span>
+                            <div class="arch-node arch-live">Orquestador RAG</div>
+                            <span class="arch-link" aria-hidden="true"></span>
+                            <div class="arch-node arch-live">AI Gateway</div>
+                        </div>
+
+                        <div class="arch-row arch-row-bottom">
+                            <div class="arch-node arch-live">Analytics + Mejora Continua</div>
+                            <span class="arch-link" aria-hidden="true"></span>
+                            <div class="arch-node arch-node-focus arch-live">WebApp + Widget + Canales</div>
+                        </div>
+
+                        <div class="arch-caption">Flujo continuo de datos, contexto y aprendizaje entre capas.</div>
                     </div>
                 </div>
             </div>

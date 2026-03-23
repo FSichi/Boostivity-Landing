@@ -277,3 +277,39 @@ if(chatSimulation) {
     }, { threshold: 0.6 });
     chatObserver.observe(chatSimulation);
 }
+
+// Architecture flow animation
+const archDiagram = document.querySelector('.arch-diagram');
+if (archDiagram) {
+    const archNodes = Array.from(archDiagram.querySelectorAll('.arch-live'));
+    let archIndex = 0;
+    let archTicker = null;
+
+    const tickArch = () => {
+        if (!archNodes.length) return;
+        archNodes.forEach(node => node.classList.remove('is-active'));
+        archNodes[archIndex].classList.add('is-active');
+        archIndex = (archIndex + 1) % archNodes.length;
+    };
+
+    const archObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                archDiagram.classList.add('is-live');
+                if (!archTicker) {
+                    tickArch();
+                    archTicker = setInterval(tickArch, 900);
+                }
+            } else {
+                archDiagram.classList.remove('is-live');
+                if (archTicker) {
+                    clearInterval(archTicker);
+                    archTicker = null;
+                }
+                archNodes.forEach(node => node.classList.remove('is-active'));
+            }
+        });
+    }, { threshold: 0.35 });
+
+    archObserver.observe(archDiagram);
+}

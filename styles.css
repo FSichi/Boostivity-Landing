@@ -593,56 +593,131 @@ footer {
 }
 
 /* Architecture Pipeline */
-.arch-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.arch-diagram {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: radial-gradient(circle at 72% 20%, rgba(14, 165, 233, 0.09), transparent 45%), rgba(0, 0, 0, 0.22);
+  padding: 1.35rem;
+  overflow: hidden;
 }
+
+.arch-grid-line {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+  pointer-events: none;
+}
+
+.arch-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.arch-row + .arch-row {
+  margin-top: 1rem;
+}
+
 .arch-node {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 1.2rem 1.8rem;
-    border-radius: 12px;
-    font-weight: 500;
-    position: relative;
-    font-size: 0.95rem;
-    z-index: 2;
-    transition: transform 0.3s;
+  min-width: 190px;
+  text-align: center;
+  background: rgba(17, 24, 39, 0.65);
+  border: 1px solid var(--border-color);
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  position: relative;
+  font-size: 0.95rem;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
+
 .arch-node:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255,255,255,0.2);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.22);
 }
-.arch-node.highlight {
-    border-color: rgba(16, 185, 129, 0.5);
-    background: rgba(16, 185, 129, 0.05);
-    color: #fff;
+
+.arch-node-focus {
+  border-color: rgba(16, 185, 129, 0.6);
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.11), rgba(14, 165, 233, 0.09));
+  box-shadow: 0 0 26px rgba(16, 185, 129, 0.14);
 }
-.arch-node.glow {
-    box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+
+.arch-link {
+  width: 36px;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(153, 169, 191, 0.38), rgba(16, 185, 129, 0.75));
+  position: relative;
+  overflow: hidden;
 }
-.arch-node:not(:last-child)::after {
-    content: '→';
-    position: absolute;
-    right: -1.4rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    font-size: 1.2rem;
+
+.arch-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30%;
+  width: 30%;
+  height: 6px;
+  transform: translateY(-50%);
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
 }
+
+.arch-diagram.is-live .arch-link::after {
+  animation: archPulse 1.9s linear infinite;
+}
+
+.arch-live.is-active {
+  border-color: rgba(14, 165, 233, 0.62);
+  box-shadow: 0 0 26px rgba(14, 165, 233, 0.22);
+}
+
+.arch-caption {
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+@keyframes archPulse {
+  0% { left: -30%; }
+  100% { left: 110%; }
+}
+
 @media (max-width: 900px) {
-    .arch-wrapper { flex-direction: column; width: 100%; gap: 1.2rem; }
-    .arch-node { width: 100%; text-align: center; }
-    .arch-node:not(:last-child)::after {
-        content: '↓';
-        right: 50%;
-        bottom: -1.4rem;
-        top: auto;
-        transform: translateX(50%);
-    }
+  .arch-node {
+    min-width: 100%;
+  }
+
+  .arch-link {
+    width: 2px;
+    height: 24px;
+  }
+
+  .arch-link::after {
+    width: 8px;
+    height: 30%;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+  }
+
+  @keyframes archPulse {
+    0% { top: -30%; }
+    100% { top: 110%; }
+  }
 }
 
 /* Impact bars */
