@@ -84,41 +84,45 @@ const agentData = {
     }
 };
 
-const tabBtns = document.querySelectorAll('.tab-btn');
+const tabBtns = document.querySelectorAll('.tab-btn[data-tab]');
 const agentTone = document.getElementById('a-tone');
 const agentTitle = document.getElementById('a-title');
 const agentDesc = document.getElementById('a-desc');
 const agentCaps = document.getElementById('a-caps');
 const tabContent = document.getElementById('agent-display');
 
-tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+if (tabBtns.length && agentTone && agentTitle && agentDesc && agentCaps && tabContent) {
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-        // Animación fluida de transición
-        tabContent.style.opacity = '0';
-        tabContent.style.transform = 'translateY(10px)';
-        tabContent.style.transition = 'all 0.3s ease';
+            // Animación fluida de transición
+            tabContent.style.opacity = '0';
+            tabContent.style.transform = 'translateY(10px)';
+            tabContent.style.transition = 'all 0.3s ease';
 
-        setTimeout(() => {
-            const data = agentData[btn.dataset.tab];
-            agentTone.innerText = data.tone;
-            agentTitle.innerText = data.title;
-            agentDesc.innerText = data.desc;
-            
-            agentCaps.innerHTML = '';
-            data.caps.forEach(cap => {
-                const li = document.createElement('li');
-                li.innerText = cap;
-                agentCaps.appendChild(li);
-            });
+            setTimeout(() => {
+                const data = agentData[btn.dataset.tab];
+                if (!data) return;
 
-            tabContent.style.opacity = '1';
-            tabContent.style.transform = 'translateY(0)';
-        }, 300);
+                agentTone.innerText = data.tone;
+                agentTitle.innerText = data.title;
+                agentDesc.innerText = data.desc;
+
+                agentCaps.innerHTML = '';
+                data.caps.forEach(cap => {
+                    const li = document.createElement('li');
+                    li.innerText = cap;
+                    agentCaps.appendChild(li);
+                });
+
+                tabContent.style.opacity = '1';
+                tabContent.style.transform = 'translateY(0)';
+            }, 300);
+        });
     });
-});
+}
 
 // Bar Animation Observer
 const barObserverOptions = {
@@ -140,49 +144,88 @@ const barObserver = new IntersectionObserver((entries, obs) => {
 document.querySelectorAll('.comparison-box').forEach(el => barObserver.observe(el));
 // Chat Simulation Animation
 const chatSimulation = document.getElementById('chat-simulation');
-if(chatSimulation) {
-    const chatObserver = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                startChatAnimation();
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.6 });
-    
-    chatObserver.observe(chatSimulation);
+const chatTitle = document.getElementById('chat-title-header');
+let chatTimeout1, chatTimeout2, chatTimeout3, chatTimeout4;
+
+const scenarios = {
+    soporte: {
+        title: 'Agente Soporte Técnico',
+        messages: [
+            { type: 'user', name: 'Técnico de Campo', text: 'Se me rompió la carcasa de este equipo (Modelo XJ-9). ¿Con qué lo puedo pegar o reparar?' },
+            { type: 'bot', name: 'Boostivity IA', text: 'Analizando manuales técnicos y catálogo de repuestos... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity IA', text: 'Para la <strong>carcasa del Modelo XJ-9</strong>, fabricada en policarbonato, te recomiendo utilizar un <span class="highlight-text">adhesivo estructural para plásticos</span>.<br><br>📝 <strong>Instrucciones:</strong> Limpia la superficie con alcohol isopropílico, aplica una capa fina y presiona por 30 segundos.<br><br>✅ Tiempo de curado sugerido: 12 horas antes de uso intensivo.' }
+        ]
+    },
+    normativas: {
+        title: 'Agente Cumplimiento e-RRHH',
+        messages: [
+            { type: 'user', name: 'Operario Nuevo', text: '¿Qué normativa tengo que seguir para cumplir con las regulaciones de seguridad al operar el montacargas?' },
+            { type: 'bot', name: 'Boostivity IA', text: 'Consultando manual de Prevención de Riesgos (PRL)... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity IA', text: 'Según el documento <strong>PRL-2025 v2</strong>, debes cumplir los siguientes puntos obligatorios:<br><br>1. Uso de casco Clase B y zapatos de punta acero.<br>2. Verificación del nivel de aceite previa.<br>3. No exceder 15 km/h en pasillos.<br><br>💡 <em>¿Necesitas que te agende el curso de actualización anual obligatorio?</em>' }
+        ]
+    },
+    comercial: {
+        title: 'Agente de Ventas',
+        messages: [
+            { type: 'user', name: 'Ejecutivo de Cuenta', text: 'El cliente me dice que la competencia les ofreció un plan un 10% más barato. ¿Qué le respondo?' },
+            { type: 'bot', name: 'Boostivity IA', text: 'Cruzando objeciones con battlecards y playbook de ventas... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity IA', text: 'Dile que nuestro servicio incluye <strong class="text-accent">Mantenimiento Preventivo Mensual</strong>, mientras que la competencia lo cobra aparte (sumando un 25% oculto al año).<br><br>Además, por sus 50 licencias, estás autorizado a igualar el monto ofreciendo un mes extra sin costo.<br><br>🔗 <a href="#" style="color:var(--primary);">Generé el borrador de correo con esta propuesta para el cliente.</a>' }
+        ]
+    },
+    catalogo: {
+        title: 'Agente de Análisis Comparativo',
+        messages: [
+            { type: 'user', name: 'Líder de Operaciones', text: 'Necesito elegir entre plan Básico, Profesional y Enterprise para soporte interno. ¿Cuál conviene según volumen de consultas y SLA?' },
+            { type: 'bot', name: 'Boostivity IA', text: 'Analizando matriz de volumen, prioridad de incidentes y objetivos de servicio... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity IA', text: 'Para tu escenario (alto volumen y necesidad de respuesta rápida), la mejor relación capacidad/costo es <strong>Plan Profesional</strong>.<br><br><strong>Comparativa resumida:</strong><br><table style="width:100%; border-collapse:collapse; margin-top:8px; font-size:0.88rem;"><thead><tr><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Plan</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Consultas/mes</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">SLA</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Recomendado para</th></tr></thead><tbody><tr><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Básico</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Hasta 3.000</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">24h</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Equipos pequeños</td></tr><tr><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Profesional</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Hasta 12.000</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">8h</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Operación en crecimiento</td></tr><tr><td style="padding:6px;">Enterprise</td><td style="padding:6px;">Ilimitado</td><td style="padding:6px;">2h</td><td style="padding:6px;">Operación crítica 24/7</td></tr></tbody></table><br><strong>Recomendación:</strong> empezar con Profesional y activar escalado a Enterprise si superas 10.000 consultas durante 2 meses consecutivos.' }
+        ]
+    }
+};
+
+function clearChatIntervals() {
+    clearTimeout(chatTimeout1);
+    clearTimeout(chatTimeout2);
+    clearTimeout(chatTimeout3);
+    clearTimeout(chatTimeout4);
+    if(chatSimulation) {
+        chatSimulation.innerHTML = '';
+    }
 }
 
-function startChatAnimation() {
-    const messages = [
-        { type: 'user', name: 'Ejecutivo de Ventas', text: '¿Tenemos stock del Servidor Nexus X200 para el cliente Acme Corp? Si no hay, ¿qué alternativa ofrezco?' },
-        { type: 'bot', name: 'Boostivity IA', text: 'Analizando inventario ERP y catálogo de productos... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
-        { type: 'bot', name: 'Boostivity IA', text: 'Actualmente hay <span class="highlight-text">0 unidades</span> del Nexus X200 en inventario (Próxima entrega: 15 días). <br><br>💡 <strong>Alternativa sugerida:</strong> Servidor Atlas Pro M1.<br>Cumple con los mismos requisitos técnicos de Acme Corp. Además, tenemos 12 en stock y una regla configurada te permite dar un <span class="highlight-text">15% de descuento</span> para cierres hoy al ofrecer esta alternativa.' }
-    ];
+function playScenario(scenarioKey) {
+    if(!chatSimulation) return;
+    clearChatIntervals();
+    
+    const data = scenarios[scenarioKey];
+    if (!data) return;
 
-    let delay = 600;
+    if (chatTitle) {
+        chatTitle.innerHTML = `<div class="bot-icon" style="width: 18px; height: 18px; font-size: 0.6rem;">B</div> ${data.title}`;
+    }
+    
+    let delay = 500;
     
     // Add user message
-    setTimeout(() => appendMessage(messages[0]), delay);
+    chatTimeout1 = setTimeout(() => appendMsg(data.messages[0]), delay);
     
     // Add thinking message
-    delay += 1500;
+    delay += 1200;
     let tempId = 'msg-temp';
-    setTimeout(() => appendMessage({...messages[1], id: tempId}), delay);
+    chatTimeout2 = setTimeout(() => appendMsg({...data.messages[1], id: tempId}), delay);
     
     // Replace with final bot message
-    delay += 3200;
-    setTimeout(() => {
+    delay += 2500;
+    chatTimeout3 = setTimeout(() => {
         const tempElement = document.getElementById(tempId);
         if(tempElement) tempElement.style.opacity = '0';
-        setTimeout(() => {
+        chatTimeout4 = setTimeout(() => {
             if(tempElement) tempElement.remove();
-            appendMessage(messages[2]);
+            appendMsg(data.messages[2]);
         }, 300);
     }, delay);
 }
 
-function appendMessage(msg) {
+function appendMsg(msg) {
     const div = document.createElement('div');
     div.className = `chat-msg msg-${msg.type}`;
     if(msg.id) div.id = msg.id;
@@ -196,10 +239,41 @@ function appendMessage(msg) {
         <div class="msg-bubble">${msg.text}</div>
     `;
     
-    document.getElementById('chat-simulation').appendChild(div);
+    chatSimulation.appendChild(div);
     
-    // Animate in
     setTimeout(() => {
         div.classList.add('show');
     }, 50);
+}
+
+// Add event listeners to scenario buttons
+const scenarioBtns = document.querySelectorAll('.scenario-btn');
+scenarioBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        scenarioBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        playScenario(btn.dataset.scenario);
+    });
+});
+
+const restartBtn = document.getElementById('restart-chat');
+if(restartBtn) {
+    restartBtn.addEventListener('click', () => {
+        const activeBtn = document.querySelector('.scenario-btn.active');
+        if(activeBtn) playScenario(activeBtn.dataset.scenario);
+    });
+}
+
+// Auto-start on scroll
+if(chatSimulation) {
+    let started = false;
+    const chatObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting && !started) {
+                started = true;
+                playScenario('soporte');
+            }
+        });
+    }, { threshold: 0.6 });
+    chatObserver.observe(chatSimulation);
 }

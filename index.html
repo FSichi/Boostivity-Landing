@@ -165,51 +165,63 @@
 
 
         
-        <!-- Marcas / Integraciones -->
+                <!-- Marcas / Integraciones -->
         <div class="container reveal mb-5 text-center" style="margin-top: 5rem;">
-            <p class="text-muted" style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 600;">Se integra nativamente con tu ecosistema corporativo</p>
+            <p class="text-muted" style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 600;">Procesa el conocimiento de tus fuentes actuales</p>
             <div class="marquee-container">
                 <div class="marquee-track">
                     <!-- Set 1 -->
-                    <div class="integration-pill">💬 Slack</div>
-                    <div class="integration-pill">🟢 WhatsApp</div>
-                    <div class="integration-pill">📞 Microsoft Teams</div>
-                    <div class="integration-pill">☁️ Salesforce</div>
-                    <div class="integration-pill">⚙️ SAP ERP</div>
+                    <div class="integration-pill">📄 Documentos (PDF, Word)</div>
+                    <div class="integration-pill">📊 Hojas de cálculo (Excel)</div>
+                    <div class="integration-pill">🖥️ Presentaciones (PPTX)</div>
+                    <div class="integration-pill">🌐 Web Scraping</div>
                     <div class="integration-pill">📝 Notion</div>
-                    <div class="integration-pill">🎫 Zendesk</div>
-                    <div class="integration-pill">📧 Workspace</div>
-                    <!-- Set 2 (Duplicado para loop infinito fluído) -->
-                    <div class="integration-pill">💬 Slack</div>
-                    <div class="integration-pill">🟢 WhatsApp</div>
-                    <div class="integration-pill">📞 Microsoft Teams</div>
-                    <div class="integration-pill">☁️ Salesforce</div>
-                    <div class="integration-pill">⚙️ SAP ERP</div>
+                    <div class="integration-pill">🧩 Widget Web</div>
+                    <div class="integration-pill">📁 Datos crudos (JSON, MD, TXT)</div>
+                    <!-- Set 2 -->
+                    <div class="integration-pill">📄 Documentos (PDF, Word)</div>
+                    <div class="integration-pill">📊 Hojas de cálculo (Excel)</div>
+                    <div class="integration-pill">🖥️ Presentaciones (PPTX)</div>
+                    <div class="integration-pill">🌐 Web Scraping</div>
                     <div class="integration-pill">📝 Notion</div>
-                    <div class="integration-pill">🎫 Zendesk</div>
-                    <div class="integration-pill">📧 Workspace</div>
+                    <div class="integration-pill">🧩 Widget Web</div>
+                    <div class="integration-pill">📁 Datos crudos (JSON, MD, TXT)</div>
                 </div>
             </div>
         </div>
+        </div>
 
-        <!-- Chat Simulation -->
+                <!-- Chat Simulation -->
         <section id="demo-visual" class="section">
             <div class="container reveal">
-                <div class="section-header text-center mb-5">
+                <div class="section-header text-center mb-4">
                     <h2 class="section-title">El conocimiento en <span class="text-gradient">acción</span></h2>
-                    <p class="section-subtitle">Así es como tus equipos resolverán problemas operativos complejos en <strong class="text-main">segundos</strong> en lugar de horas saltando entre plataformas.</p>
+                    <p class="section-subtitle">Tus equipos resolverán problemas operativos complejos en <strong class="text-main">segundos</strong> en lugar de horas buscando manuales.</p>
                 </div>
                 
+                <div class="scenario-selector text-center mb-4">
+                    <p class="text-muted mb-2" style="font-size: 0.9rem;">Elige un caso de uso para ver cómo responde el agente:</p>
+                    <div class="tabs" style="justify-content: center; display: inline-flex;">
+                        <button class="tab-btn scenario-btn active" data-scenario="soporte">Soporte Técnico</button>
+                        <button class="tab-btn scenario-btn" data-scenario="normativas">Normativas e-RRHH</button>
+                        <button class="tab-btn scenario-btn" data-scenario="comercial">Argumentación Cierre</button>
+                        <button class="tab-btn scenario-btn" data-scenario="catalogo">Comparativa de Planes</button>
+                    </div>
+                </div>
+
                 <div class="chat-window relative">
-                    <div class="chat-header">
-                        <div class="dots"><span></span><span></span><span></span></div>
-                        <div style="color: var(--text-main); font-weight: 600; font-size: 0.95rem; margin-left: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                            <div class="bot-icon" style="width: 18px; height: 18px; font-size: 0.6rem;">B</div>
-                            Terminal Boostivity · Agente Comercial
+                    <div class="chat-header justify-between">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="dots"><span></span><span></span><span></span></div>
+                            <div id="chat-title-header" style="color: var(--text-main); font-weight: 600; font-size: 0.95rem; margin-left: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <div class="bot-icon" style="width: 18px; height: 18px; font-size: 0.6rem;">B</div>
+                                Agente Soporte Técnico
+                            </div>
                         </div>
+                        <button id="restart-chat" class="btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem; border-radius: 6px;">↻ Reiniciar</button>
                     </div>
                     <div class="chat-body" id="chat-simulation">
-                        <!-- Javascript animará e inyectará los mensajes aquí al scrollear -->
+                        <!-- Javascript inyectará los mensajes -->
                     </div>
                 </div>
             </div>
@@ -285,7 +297,6 @@
                         <div
                             style="font-size: 2.3rem; font-family: var(--font-display); font-weight: 700; margin: 0.8rem 0;">
                             9.4m <span class="text-accent"
-                                style="font-size: 1.6rem; vertical-align: middle;">&rarr;</span> 2.8m
                         </div>
                         <p class="text-muted" style="font-size: 0.95rem;">Reducción en tiempos de respuesta para
                             soporte, preventa y operaciones.</p>
