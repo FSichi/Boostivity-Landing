@@ -16,6 +16,29 @@ const observer = new IntersectionObserver((entries, obs) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileNav = document.querySelector('.mobile-nav');
+
+if (mobileMenuBtn && mobileNav) {
+    mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        mobileMenuBtn.classList.toggle('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close menu when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
 // Contadores Numéricos (Efecto Odometer)
 const countObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -155,7 +178,7 @@ document.querySelectorAll('.comparison-box').forEach(el => barObserver.observe(e
 // Chat Simulation Animation
 const chatSimulation = document.getElementById('chat-simulation');
 const chatTitle = document.getElementById('chat-title-header');
-let chatTimeout1, chatTimeout2, chatTimeout3, chatTimeout4;
+let chatTimeouts = [];
 
 const scenarios = {
     soporte: {
@@ -193,10 +216,8 @@ const scenarios = {
 };
 
 function clearChatIntervals() {
-    clearTimeout(chatTimeout1);
-    clearTimeout(chatTimeout2);
-    clearTimeout(chatTimeout3);
-    clearTimeout(chatTimeout4);
+    chatTimeouts.forEach(t => clearTimeout(t));
+    chatTimeouts = [];
     if(chatSimulation) {
         chatSimulation.innerHTML = '';
     }
@@ -216,23 +237,23 @@ function playScenario(scenarioKey) {
     let delay = 500;
     
     // Add user message
-    chatTimeout1 = setTimeout(() => appendMsg(data.messages[0]), delay);
+    chatTimeouts.push(setTimeout(() => appendMsg(data.messages[0]), delay));
     
     // Add thinking message
     delay += 1200;
     let tempId = 'msg-temp';
-    chatTimeout2 = setTimeout(() => appendMsg({...data.messages[1], id: tempId}), delay);
+    chatTimeouts.push(setTimeout(() => appendMsg({...data.messages[1], id: tempId}), delay));
     
     // Replace with final bot message
     delay += 2500;
-    chatTimeout3 = setTimeout(() => {
+    chatTimeouts.push(setTimeout(() => {
         const tempElement = document.getElementById(tempId);
         if(tempElement) tempElement.style.opacity = '0';
-        chatTimeout4 = setTimeout(() => {
+        chatTimeouts.push(setTimeout(() => {
             if(tempElement) tempElement.remove();
             appendMsg(data.messages[2]);
-        }, 300);
-    }, delay);
+        }, 300));
+    }, delay));
 }
 
 function appendMsg(msg) {
