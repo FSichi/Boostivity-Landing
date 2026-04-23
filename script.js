@@ -62,12 +62,12 @@ function startCounter(el) {
         const easeOut = 1 - Math.pow(1 - progress, 3); // Cubic Ease Out
         const currentCount = Math.floor(easeOut * target);
         
-        el.innerText = currentCount.toLocaleString('es-ES');
-        
+        el.innerText = currentCount.toLocaleString('en-US');
+
         if (progress < 1) {
             window.requestAnimationFrame(step);
         } else {
-            el.innerText = target.toLocaleString('es-ES') + '+';
+            el.innerText = target.toLocaleString('en-US') + '+';
         }
     };
     window.requestAnimationFrame(step);
@@ -76,43 +76,43 @@ function startCounter(el) {
 // Lógica de Tabs interactivos de Agentes
 const agentData = {
     comercial: {
-        tone: "Tono: consultivo y persuasivo",
-        title: "Agente Comercial",
-        desc: "Prioriza cierre de oportunidades, compara productos y responde objeciones con contexto actualizado del negocio.",
+        tone: "Tone: consultative and persuasive",
+        title: "Sales Agent",
+        desc: "Prioritizes closing opportunities, compares products and handles objections with up-to-date business context.",
         caps: [
-            "Argumentación de valor por segmento",
-            "Comparativas técnicas y funcionales",
-            "Propuestas guiadas según stock y política"
+            "Value arguments by segment",
+            "Technical and functional comparisons",
+            "Guided proposals based on stock and policy"
         ]
     },
     soporte: {
-        tone: "Tono: técnico y empático",
-        title: "Agente de Soporte Técnico",
-        desc: "Resuelve incidencias con prioridad, referencia documentación interna vigente y propone diagnóstico paso a paso.",
+        tone: "Tone: technical and empathetic",
+        title: "Technical Support Agent",
+        desc: "Resolves incidents by priority, references current internal documentation and proposes step-by-step diagnostics.",
         caps: [
-            "Triaging automático por severidad",
-            "Resolución guiada con playbooks internos",
-            "Derivación a especialista con contexto"
+            "Automatic triage by severity",
+            "Guided resolution with internal playbooks",
+            "Escalation to specialists with full context"
         ]
     },
     ops: {
-        tone: "Tono: ejecutivo orientado a proceso",
-        title: "Agente de Operaciones",
-        desc: "Analiza procesos internos, detecta fricciones operativas y recomienda mejoras usando datos y reglas configuradas.",
+        tone: "Tone: executive and process-oriented",
+        title: "Operations Agent",
+        desc: "Analyzes internal processes, detects operational friction and recommends improvements using data and configured rules.",
         caps: [
-            "Monitoreo de cuellos de botella",
-            "Sugerencias de estandarización",
-            "Checklist de cumplimiento y calidad"
+            "Bottleneck monitoring",
+            "Standardization suggestions",
+            "Compliance and quality checklists"
         ]
     },
     cumplimiento: {
-        tone: "Tono: normativo, claro y preventivo",
-        title: "Agente de Cumplimiento",
-        desc: "Interpreta políticas internas y normativa aplicable para reducir riesgos operativos y regulatorios.",
+        tone: "Tone: regulatory, clear and preventive",
+        title: "Compliance Agent",
+        desc: "Interprets internal policies and applicable regulations to reduce operational and regulatory risks.",
         caps: [
-            "Validación de requisitos por proceso",
-            "Alertas de desviación y no conformidades",
-            "Guías accionables para auditorías internas"
+            "Requirement validation per process",
+            "Alerts for deviations and non-conformities",
+            "Actionable guides for internal audits"
         ]
     }
 };
@@ -182,35 +182,35 @@ let chatTimeouts = [];
 
 const scenarios = {
     soporte: {
-        title: 'Agente Soporte Técnico',
+        title: 'Technical Support Agent',
         messages: [
-            { type: 'user', name: 'Técnico de Campo', text: 'Se me rompió la carcasa de este equipo (Modelo XJ-9). ¿Con qué lo puedo pegar o reparar?' },
-            { type: 'bot', name: 'Boostivity IA', text: 'Analizando manuales técnicos y catálogo de repuestos... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
-            { type: 'bot', name: 'Boostivity IA', text: 'Para la <strong>carcasa del Modelo XJ-9</strong>, fabricada en policarbonato, te recomiendo utilizar un <span class="highlight-text">adhesivo estructural para plásticos</span>.<br><br>📝 <strong>Instrucciones:</strong> Limpia la superficie con alcohol isopropílico, aplica una capa fina y presiona por 30 segundos.<br><br>✅ Tiempo de curado sugerido: 12 horas antes de uso intensivo.' }
+            { type: 'user', name: 'Field Technician', text: 'The casing on this unit (Model XJ-9) broke. What can I use to glue or repair it?' },
+            { type: 'bot', name: 'Boostivity AI', text: 'Analyzing technical manuals and parts catalog... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity AI', text: 'For the <strong>Model XJ-9 casing</strong>, made of polycarbonate, I recommend using a <span class="highlight-text">structural adhesive for plastics</span>.<br><br>📝 <strong>Instructions:</strong> Clean the surface with isopropyl alcohol, apply a thin layer and press for 30 seconds.<br><br>✅ Suggested cure time: 12 hours before intensive use.' }
         ]
     },
     normativas: {
-        title: 'Agente Cumplimiento e-RRHH',
+        title: 'HR Compliance Agent',
         messages: [
-            { type: 'user', name: 'Operario Nuevo', text: '¿Qué normativa tengo que seguir para cumplir con las regulaciones de seguridad al operar el montacargas?' },
-            { type: 'bot', name: 'Boostivity IA', text: 'Consultando manual de Prevención de Riesgos (PRL)... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
-            { type: 'bot', name: 'Boostivity IA', text: 'Según el documento <strong>PRL-2025 v2</strong>, debes cumplir los siguientes puntos obligatorios:<br><br>1. Uso de casco Clase B y zapatos de punta acero.<br>2. Verificación del nivel de aceite previa.<br>3. No exceder 15 km/h en pasillos.<br><br>💡 <em>¿Necesitas que te agende el curso de actualización anual obligatorio?</em>' }
+            { type: 'user', name: 'New Operator', text: 'Which regulations do I need to follow to comply with safety rules when operating the forklift?' },
+            { type: 'bot', name: 'Boostivity AI', text: 'Checking the Risk Prevention (PRL) manual... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity AI', text: 'Per document <strong>PRL-2025 v2</strong>, you must comply with the following mandatory points:<br><br>1. Use of Class B helmet and steel-toe boots.<br>2. Verify oil level before operating.<br>3. Do not exceed 15 km/h in aisles.<br><br>💡 <em>Want me to schedule the mandatory annual refresher course?</em>' }
         ]
     },
     comercial: {
-        title: 'Agente de Ventas',
+        title: 'Sales Agent',
         messages: [
-            { type: 'user', name: 'Ejecutivo de Cuenta', text: 'El cliente me dice que la competencia les ofreció un plan un 10% más barato. ¿Qué le respondo?' },
-            { type: 'bot', name: 'Boostivity IA', text: 'Cruzando objeciones con battlecards y playbook de ventas... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
-            { type: 'bot', name: 'Boostivity IA', text: 'Dile que nuestro servicio incluye <strong class="text-accent">Mantenimiento Preventivo Mensual</strong>, mientras que la competencia lo cobra aparte (sumando un 25% oculto al año).<br><br>Además, por sus 50 licencias, estás autorizado a igualar el monto ofreciendo un mes extra sin costo.<br><br>🔗 <a href="#" style="color:var(--primary);">Generé el borrador de correo con esta propuesta para el cliente.</a>' }
+            { type: 'user', name: 'Account Executive', text: 'The client tells me a competitor offered them a plan 10% cheaper. How should I respond?' },
+            { type: 'bot', name: 'Boostivity AI', text: 'Cross-referencing objections with battlecards and sales playbook... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity AI', text: 'Tell them our service includes <strong class="text-accent">Monthly Preventive Maintenance</strong>, while the competition charges it separately (adding a hidden 25% per year).<br><br>Also, given their 50 licenses, you are authorized to match the price by offering one extra month at no cost.<br><br>🔗 <a href="#" style="color:var(--primary);">I drafted the proposal email to the client.</a>' }
         ]
     },
     catalogo: {
-        title: 'Agente de Análisis Comparativo',
+        title: 'Comparative Analysis Agent',
         messages: [
-            { type: 'user', name: 'Líder de Operaciones', text: 'Necesito elegir entre plan Básico, Profesional y Enterprise para soporte interno. ¿Cuál conviene según volumen de consultas y SLA?' },
-            { type: 'bot', name: 'Boostivity IA', text: 'Analizando matriz de volumen, prioridad de incidentes y objetivos de servicio... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
-            { type: 'bot', name: 'Boostivity IA', text: 'Para tu escenario (alto volumen y necesidad de respuesta rápida), la mejor relación capacidad/costo es <strong>Plan Profesional</strong>.<br><br><strong>Comparativa resumida:</strong><br><table style="width:100%; border-collapse:collapse; margin-top:8px; font-size:0.88rem;"><thead><tr><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Plan</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Consultas/mes</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">SLA</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Recomendado para</th></tr></thead><tbody><tr><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Básico</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Hasta 3.000</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">24h</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Equipos pequeños</td></tr><tr><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Profesional</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Hasta 12.000</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">8h</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Operación en crecimiento</td></tr><tr><td style="padding:6px;">Enterprise</td><td style="padding:6px;">Ilimitado</td><td style="padding:6px;">2h</td><td style="padding:6px;">Operación crítica 24/7</td></tr></tbody></table><br><strong>Recomendación:</strong> empezar con Profesional y activar escalado a Enterprise si superas 10.000 consultas durante 2 meses consecutivos.' }
+            { type: 'user', name: 'Operations Lead', text: 'I need to choose between Basic, Professional and Enterprise plans for internal support. Which one fits best given query volume and SLA?' },
+            { type: 'bot', name: 'Boostivity AI', text: 'Analyzing volume matrix, incident priority and service objectives... <span class="typing-indicator" style="display:inline-flex;"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>', isTemp: true },
+            { type: 'bot', name: 'Boostivity AI', text: 'For your scenario (high volume and the need for fast response), the best capacity/cost fit is the <strong>Professional Plan</strong>.<br><br><strong>Summary comparison:</strong><br><table style="width:100%; border-collapse:collapse; margin-top:8px; font-size:0.88rem;"><thead><tr><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Plan</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Queries/month</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">SLA</th><th style="text-align:left; padding:6px; border-bottom:1px solid rgba(255,255,255,.18);">Recommended for</th></tr></thead><tbody><tr><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Basic</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Up to 3,000</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">24h</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Small teams</td></tr><tr><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Professional</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Up to 12,000</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">8h</td><td style="padding:6px; border-bottom:1px solid rgba(255,255,255,.1);">Growing operations</td></tr><tr><td style="padding:6px;">Enterprise</td><td style="padding:6px;">Unlimited</td><td style="padding:6px;">2h</td><td style="padding:6px;">Critical 24/7 operations</td></tr></tbody></table><br><strong>Recommendation:</strong> start with Professional and trigger an upgrade to Enterprise if you exceed 10,000 queries for 2 consecutive months.' }
         ]
     }
 };

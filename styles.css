@@ -252,6 +252,12 @@ h4,
     color: #030712;
 }
 
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
 .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -1888,6 +1894,10 @@ footer {
     .logo-mark {
         width: 30px;
         height: 30px;
+    }
+
+    .logo-img {
+        height: 32px;
     }
 
     .pill-badge {
